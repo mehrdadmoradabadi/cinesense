@@ -15,7 +15,7 @@ const axiosInstance = axios.create({
   baseURL: "https://api.themoviedb.org/3",
   headers: {
     accept: "application/json",
-    Authorization: import.meta.env.REACT_APP_AUTHORIZATION_TOKEN,
+    Authorization: import.meta.env.VITE_REACT_APP_AUTHORIZATION_TOKEN,
   },
 });
 class APIClient<T> {
