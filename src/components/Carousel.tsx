@@ -1,19 +1,18 @@
 import React from "react";
-import { Box, IconButton, Image, useBreakpointValue } from "@chakra-ui/react";
-// Here we have used react-icons package for the icons
+import { Box, IconButton, useBreakpointValue } from "@chakra-ui/react";
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
-// And react-slick as our Carousel Lib
 import Slider from "react-slick";
+import useUpcommingMovies from "../hooks/useUpcommingMovies";
+import CarouselMovies from "./CarouselMovies";
 
-// Settings for the slider
 const settings = {
-  dots: true,
-  arrows: false,
+  dots: false,
+  arrows: true,
   fade: true,
   infinite: true,
   autoplay: true,
   speed: 100,
-  autoplaySpeed: 5000,
+  autoplaySpeed: 6000,
   slidesToShow: 1,
   slidesToScroll: 1,
 };
@@ -29,12 +28,7 @@ export default function Carousel() {
   const side = useBreakpointValue({ base: "30%", md: "10px" });
 
   // These are the images used in the slide
-  const cards = [
-    "https://images.unsplash.com/photo-1612852098516-55d01c75769a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDR8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=900&q=60",
-    "https://images.unsplash.com/photo-1627875764093-315831ac12f7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDJ8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=900&q=60",
-    "https://images.unsplash.com/photo-1571432248690-7fd6980a1ae2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDl8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=900&q=60",
-  ];
-
+  const { data } = useUpcommingMovies();
   return (
     <Box
       position={"relative"}
@@ -43,7 +37,6 @@ export default function Carousel() {
       overflow={"hidden"}
       marginBottom={5}
     >
-      {/* CSS files for react-slick */}
       <link
         rel="stylesheet"
         type="text/css"
@@ -55,7 +48,6 @@ export default function Carousel() {
         type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
       />
-      {/* Left Icon */}
       <IconButton
         aria-label="left-arrow"
         colorScheme="messenger"
@@ -85,8 +77,10 @@ export default function Carousel() {
       </IconButton>
       {/* Slider */}
       <Slider {...settings} ref={(slider) => setSlider(slider)}>
-        {cards.map((url, index) => (
-          <Image key={index} src={url} objectFit="contain" />
+        {data?.results.map((movie) => (
+          <Box key={movie.id}>
+            <CarouselMovies movie={movie} />
+          </Box>
         ))}
       </Slider>
     </Box>
