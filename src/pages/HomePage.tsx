@@ -5,6 +5,7 @@ import MovieHeading from "../components/MovieHeading";
 import SortSelector from "../components/SortSelector";
 
 const HomePage = () => {
+  console.log(import.meta.env);
   return (
     <Grid
       templateAreas={{
