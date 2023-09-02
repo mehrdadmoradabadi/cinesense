@@ -28,25 +28,25 @@ To run the project locally, you'll need to have the following:
 
 2. Navigate to the project directory:
 
-cd cinesence
+   `cd cinesence`
 
 3. Install the dependencies:
 
-npm install
+   `npm install`
 
 4. Set up the environment variable:
 
--Create a .env file in the root directory
+   - Create a .env file in the root directory
 
--Add the following line to the .env file, replacing <YOUR_API_TOKEN> with your TMDB API token:
+   - Add the following line to the .env file, replacing <YOUR_API_TOKEN> with your TMDB API token:
 
-VITE_REACT_APP_AUTHORIZATION_TOKEN=<YOUR_API_TOKEN>
+`VITE_REACT_APP_AUTHORIZATION_TOKEN=<YOUR_API_TOKEN>`
 
 5. Start the development server:
 
-vite dev
+      `vite dev`
 
-6. Open your browser and visit http://localhost:5173/to see the Cinesence app in action.
+6. Open your browser and visit http://localhost:5173 to see the Cinesence app in action.
 
 ### Contributing
 
@@ -54,6 +54,6 @@ Contributions to Cinesence are welcome! If you have any ideas, feature requests,
 
 # Acknowledgements
 
--TMDB - The Movie Database API
+### TMDB - The Movie Database API
 
 Feel free to modify and customize the content as per your project's specific details and requirements.
