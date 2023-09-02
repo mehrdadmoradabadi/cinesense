@@ -3,14 +3,14 @@ import GenreList from "../components/GenreList";
 import MovieGrid from "../components/MovieGrid";
 import MovieHeading from "../components/MovieHeading";
 import SortSelector from "../components/SortSelector";
-import Carousel from "../components/Carousel";
+import Carousel from "../components/NewCarousel/Carousel";
 
 const HomePage = () => {
   return (
     <Grid
       templateAreas={{
         base: `"main"`,
-        lg: `"carousel carousel" "aside main"`,
+        lg: `"aside carousel" "aside main"`,
       }}
       templateColumns={{
         base: "1fr",
@@ -25,7 +25,7 @@ const HomePage = () => {
         <MovieGrid />
       </GridItem>
       <Show above="lg">
-        <GridItem area={"carousel"} margin={"auto"}>
+        <GridItem area={"carousel"}>
           <Carousel />
           {/* carousel */}
         </GridItem>
