@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import "./Carousel.css";
 import useUpcommingMovies from "../../hooks/useUpcommingMovies";
+import { useNavigate } from "react-router-dom";
 
 const Carousel: React.FC = () => {
   const [activeOption, setActiveOption] = useState<number | null>(0); // Default to the first option
-
+  const navigate = useNavigate();
   const handleOptionClick = (index: number) => {
-    setActiveOption(index);
+    if (index !== activeOption) setActiveOption(index);
+    else navigate(`/movies/${data?.results[index].id}`);
   };
   const { data } = useUpcommingMovies();
   return (
