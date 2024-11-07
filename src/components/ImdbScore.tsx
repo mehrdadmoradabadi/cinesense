@@ -7,7 +7,7 @@ const ImdbScore = ({ score }: Props) => {
   const color = score > 8.5 ? "green" : score > 6.0 ? "yellow" : "";
   return (
     <Badge colorScheme={color} fontSize={14} padding={2} borderRadius={4}>
-      {score}
+      {score.toFixed(1)}
     </Badge>
   );
 };

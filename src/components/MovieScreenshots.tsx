@@ -11,8 +11,7 @@ const MovieScreenshots = ({ id }: Props) => {
   if (error) throw error;
   const screenshots = data?.backdrops.slice(0, 2);
   return (
-    <SimpleGrid column={{ base: 1, md: 2 }} paddingY={2}>
-      {" "}
+    <SimpleGrid minChildWidth="120px" spacing={2} padding={2}>
       {screenshots?.map((screenshot) => (
         <Image
           key={screenshot.file_path}
