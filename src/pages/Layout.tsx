@@ -26,7 +26,7 @@ const Layout = () => {
           backgroundSize: "cover",
           backgroundAttachment: "fixed",
           backgroundPosition: "center",
-          filter: "blur(3px)",
+          filter: "blur(5px)",
           zIndex: -1,
         }}
         _after={{

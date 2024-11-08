@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "./Carousel.css";
 import useUpcommingMovies from "../../hooks/useUpcommingMovies";
 import { useNavigate } from "react-router-dom";
+import ImdbScore from "../ImdbScore";
+import { Text } from "@chakra-ui/react";
 
 const Carousel: React.FC = () => {
   const [activeOption, setActiveOption] = useState<number | null>(0); // Default to the first option
@@ -26,8 +28,18 @@ const Carousel: React.FC = () => {
             <div className="shadow"></div>
             <div className="label">
               <div className="info">
-                <div className="main">{option.title}</div>
-                <div className="sub">{option.vote_average}</div>
+                <div className="main">
+                  {
+                    <Text size={"sm"}>
+                      {option.title.length > 23
+                        ? option.title.slice(0, 23) + "..."
+                        : option.title}
+                    </Text>
+                  }
+                </div>
+                <div className="sub">
+                  {<ImdbScore score={option.vote_average} />}
+                </div>
               </div>
             </div>
           </div>
