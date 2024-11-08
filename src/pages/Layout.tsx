@@ -1,18 +1,18 @@
-import { Box, useColorMode } from "@chakra-ui/react";
+import { Box, useBreakpointValue, useColorMode } from "@chakra-ui/react";
 import Navbar from "../components/Navbar";
 import { Outlet } from "react-router-dom";
 import bgDark from "../assets/png/bg-dark.webp";
 import bgLight from "../assets/png/bg-light.webp";
 
 const Layout = () => {
-  const { colorMode } = useColorMode(); // Get the current color mode
-  const backgroundImage = colorMode === "light" ? bgLight : bgDark; // Choose image based on mode
-
+  const { colorMode } = useColorMode();
+  const backgroundImage = colorMode === "light" ? bgLight : bgDark;
+  const showBackground = useBreakpointValue({ base: false, md: true });
   return (
     <>
       <Box
         position="relative"
-        minHeight="100vh" // Ensure it covers full height of the viewport
+        minHeight="100vh"
         overflow="hidden"
         _before={{
           content: '""',
@@ -21,12 +21,12 @@ const Layout = () => {
           left: 0,
           right: 0,
           bottom: 0,
-          backgroundImage: `url(${backgroundImage})`,
+          backgroundImage: showBackground ? `url(${backgroundImage})` : "none",
           backgroundRepeat: "no-repeat",
           backgroundSize: "cover",
           backgroundAttachment: "fixed",
           backgroundPosition: "center",
-          filter: "blur(6px)", // Blur the background image
+          filter: "blur(3px)",
           zIndex: -1,
         }}
         _after={{
@@ -36,7 +36,7 @@ const Layout = () => {
           left: 0,
           right: 0,
           bottom: 0,
-          backgroundColor: "rgba(0, 0, 0, 0)", // Dark overlay to improve readability
+          backgroundColor: "rgba(0, 0, 0, 0)",
           zIndex: -1,
         }}
       >
