@@ -8,11 +8,9 @@ const router = createBrowserRouter([
     path: "/",
     element: <Layout />,
     errorElement: <ErrorPage />,
-    children: [
-      { index: true, element: <HomePage /> },
-      { path: "movies/:id", element: <MovieDetailPage /> },
-    ],
+    children: [{ index: true, element: <HomePage /> }],
   },
+  { path: "movies/:id", element: <MovieDetailPage /> },
 ]);
 
 export default router;
