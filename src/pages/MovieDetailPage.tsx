@@ -6,14 +6,12 @@ import {
   Heading,
   Spinner,
   useColorMode,
-  useBreakpointValue,
   Flex,
   Show,
 } from "@chakra-ui/react";
 import ExpandableText from "../components/ExpandableText";
 import MovieAttribiutes from "../components/MovieAttribiutes";
 import MovieTrailer from "../components/MovieTrailer";
-// import MovieScreenshots from "../components/MovieScreenshots";
 import Navbar from "../components/Navbar";
 
 const MovieDetailPage = () => {
@@ -22,9 +20,6 @@ const MovieDetailPage = () => {
   const { colorMode } = useColorMode();
 
   const bgColor = colorMode === "light" ? " #fffce5" : "black";
-
-  // Only show the background on large screens
-  const showBackground = useBreakpointValue({ base: false, lg: true });
 
   if (isLoading) return <Spinner />;
   if (error || !movie) throw error;
@@ -36,7 +31,7 @@ const MovieDetailPage = () => {
         width="100%"
         height="100%"
         backgroundColor={bgColor}
-        color={colorMode === "light" ? "gray.800" : "white"}
+        color={colorMode === "light" ? "gray.800" : "gray.200"}
         overflow="hidden"
       >
         <Box zIndex={2} position={"relative"}>
@@ -46,7 +41,7 @@ const MovieDetailPage = () => {
           direction="column"
           justifyContent="center"
           alignItems="flex-start"
-          padding="40px"
+          paddingX="40px"
           width={{ base: "100%", lg: "50%" }}
           height="100%"
           zIndex={2}
@@ -55,28 +50,24 @@ const MovieDetailPage = () => {
         >
           <GridItem
             position="relative"
-            backgroundColor={showBackground ? "transparent" : bgColor}
+            backgroundColor={bgColor}
             borderRadius={5}
             overflow="hidden"
           >
-            <Box position="relative" zIndex={2} padding={2}>
+            <Box position="relative" zIndex={2} padding={1}>
+              <Heading paddingBottom={2}>{movie.title}</Heading>
               <MovieTrailer id={movie.id} />
-
-              <Heading paddingBottom={8} paddingTop={3}>
-                {movie.title}
-              </Heading>
               <ExpandableText>{movie.overview}</ExpandableText>
               <MovieAttribiutes movie={movie} />
             </Box>
           </GridItem>
-          <GridItem>{/* <MovieScreenshots id={movie.id} /> */}</GridItem>
         </Flex>
         <Show above="lg">
           <Box
             position="absolute"
             top={0}
             right={0}
-            width="40%"
+            width="50%"
             height="100%"
             zIndex={1}
             backgroundImage={`url(https://image.tmdb.org/t/p/original/${movie.poster_path})`}
