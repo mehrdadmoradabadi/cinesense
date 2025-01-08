@@ -4,13 +4,13 @@ const ColorModeSwitch = () => {
   const { toggleColorMode, colorMode } = useColorMode();
   return (
     <HStack>
-      <SunIcon />
+      <SunIcon color={colorMode === "light" ? "gray.700" : "yellow.200"} />
       <Switch
         colorScheme="green"
         isChecked={colorMode === "dark"}
         onChange={toggleColorMode}
       />
-      <MoonIcon />
+      <MoonIcon color={colorMode === "light" ? "blue.500" : "gray.500"} />
     </HStack>
   );
 };
